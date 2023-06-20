@@ -3,9 +3,13 @@
 
 #### Dependencies:
 windows 10 (only tested one, might work on 7 / 11)
+
 python3.8+
 ##### python modules:
-\t - tkinter
-\t - pygetwindow
-\t -  ctypes
-\t - sys
+   - tkinter
+
+   - pygetwindow
+
+   -  ctypes
+
+   - sys
