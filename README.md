@@ -14,6 +14,7 @@ python3.8+
 
    - sys
 
+
 #### Notes
 As this is in very early development I haven't made awfully customizable, nor added a help any where in the app so I'll add it here:
 
@@ -25,3 +26,5 @@ How to 16:9-fy / how to undo it:
 
     Navigate to it, and press enter to 16:9-fy it, or backspace to undo it
    
+## Download:
+https://github.com/SyntaxError0x2D/Not-an-UltraWide-Tool/releases
