@@ -1,36 +1,43 @@
-from screeninfo import get_monitors
 from tkinter import *
 import pygetwindow as gw
-import ctypes, random
+import ctypes, sys, fileMangament as fm
 
 global scaling, res, mv2, titleName
-scaling = 1.25
-res = [2560, 1440]
-mv2 = [0, 0]
-titleName = "16:9-fy"
+
+if fm.isFile():
+    settings = fm.readSettings() 
+else: fm.warn_noFile() ; sys.exit()
+
+scaling = settings["scaling"]
+res = settings["res"]
+mv2 = settings["move_to"]
+titleName = "nUWt - 16:9-fy"
+
+override_names = ["NVIDIA GeForce Overlay", "Program Manager", "Microsoft Text Input Application", titleName]
+
+GWL_STYLE = -16 # Constants for window styles
+WS_CAPTION = 0x00C00000  # Caption style
 
 def getOptions():
     windows = gw.getAllWindows()
     ls: list = []
     for w in windows:
-        if w.title and w.title not in ["NVIDIA GeForce Overlay", "Program Manager", "Microsoft Text Input Application", titleName]:
+        if w.title and w.title not in override_names:
             ls.append([w._hWnd, w.title])
     return(ls)
 
 def check(hwnd):
-    if hwnd not in [i._hWnd for i in gw.getAllWindows()]: return(False)
-    return(True)
+    if hwnd in [i._hWnd for i in gw.getAllWindows()]: return(True)
+    return(False)
 
 def sauce(hwnd, mode): # Get the handle of the window you want to modify
     if not check(hwnd): return() 
 
     window = gw.Window(hwnd)
-    ogSize = window.size
+    #ogSize = window.size
 
 
     ### AI GENERATED!
-    GWL_STYLE = -16 # Constants for window styles
-    WS_CAPTION = 0x00C00000  # Caption style
 
     # Get the current window style
     style = ctypes.windll.user32.GetWindowLongPtrW(hwnd, GWL_STYLE)
@@ -44,7 +51,7 @@ def sauce(hwnd, mode): # Get the handle of the window you want to modify
     # Update the window's non-client area to reflect the style change
     ctypes.windll.user32.SetWindowPos(hwnd, None, 0, 0, 0, 0, 0x0002 | 0x0040)
 
-    gw.Window(hwnd).size = ogSize
+   # gw.Window(hwnd).size = ogSize
 
     window.moveTo(mv2[0],mv2[1])
     window.size = (res[0]//scaling, res[1]//scaling)
@@ -55,10 +62,7 @@ ls = getOptions()
 def refresh(lsB, lastLs):
     global ls
     ls = getOptions()
-    r = random.random()
-    if lastLs == ls: print("SAD", r) ; return()
-    print(r)
-
+    if lastLs == ls: return()
     
     lsB.delete(0, last=END)
 
@@ -91,4 +95,3 @@ win.bind("<BackSpace>", lambda _ :
 
 win.after(250, lambda : refreshLoop(lsBox, win))
 win.mainloop()
-
