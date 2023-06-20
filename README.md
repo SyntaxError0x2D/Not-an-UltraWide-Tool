@@ -13,3 +13,15 @@ python3.8+
    -  ctypes
 
    - sys
+
+#### Notes
+As this is in very early development I haven't made awfully customizable, nor added a help any where in the app so I'll add it here:
+
+How to select an item:
+
+    Click on the item or use the arrows keys to navigate to it.
+    
+How to 16:9-fy / how to undo it:
+
+    Navigate to it, and press enter to 16:9-fy it, or backspace to undo it
+   
