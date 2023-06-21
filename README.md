@@ -43,5 +43,6 @@ Does this work with all games / apss?
 Recomended to turn "Autmatically hide taskbar while in desktop mode" on in taskbar settings! 
    
 ## Download:
+
 [Releases]([http://url/to/img.png](https://github.com/SyntaxError0x2D/Not-an-UltraWide-Tool/releases)https://github.com/SyntaxError0x2D/Not-an-UltraWide-Tool/releases)
 
