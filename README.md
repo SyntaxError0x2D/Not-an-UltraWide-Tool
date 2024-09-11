@@ -37,7 +37,7 @@ How to 16:9-fy / how to undo it:
 
     Navigate to it, and press enter to 16:9-fy it, or backspace to undo it
 
-Does this work with all games / apss?
+Does this work with all games / apps?
 
     No :(
 Recomended to turn "Autmatically hide taskbar while in desktop mode" on in taskbar settings! 
